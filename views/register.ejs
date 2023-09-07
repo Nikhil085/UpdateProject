@@ -9,24 +9,34 @@
     <form action="/register" method="POST">
     <div class="formlm">
         <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="name">
+        <input minlength="5" type="text" id="name" name="name" required placeholder="name">
     </div>
     <div class="formlm">
         <label for="username">username</label>
-        <input type="text" id="username" name="username" placeholder="username">
+        <input minlength="5" type="text" id="username" name="username" placeholder="username" required="username">
     </div>
     <div class="formlm">
         <label for="Email">Email</label>
-        <input type="text" id="email" name="email" placeholder="Email">
+        <input type="text" id="email" name="email" pattern=".+@gmail\.com"
+        title="Please provide only a My Company email address" required placeholder="Email">
     </div>
     <div class="formlm">
         <label for="password">password</label>
-        <input type="password" id="password" name="password" placeholder="password">
+        <input minlength="5" type="password" id="password" name="password" required ="password">
     </div>
     <div class="formlm">
-        <input type="submit" value="Register My Account">
+        <input id = "reg" type="submit" value="Register My Account">
     </div>
     </form>
    </div>
+   <script>
+    var update = document.querySelector('#reg');
+
+    update.addEventListener('click', function(){
+        alert('Account Created !');
+    })
+
+
+  </script>
 </body>
 </html>

@@ -23,6 +23,7 @@
 </div>
 <% if(loggedIn === true){ %>
   <a class="logOutBtn" href="/logout">Log Me Out</a> 
+  <a class="logOutBtn" href="/profile">Back To Profile</a> 
   <% } else{ %>
     <div id="btns">
       <a href="/register">Register</a>
@@ -53,12 +54,12 @@
             <img src="<%= result.author.profileImage %>" alt="">
           </div>
           <div class="content">
-            <h3><%= result.author.name%></h3>
+            <h3 style="font-weight: 600; font-size: 14px;"><%= result.author.name%></h3>
             <h5><%=  %></h5>
-            <p><%= result.post %></p>
-            <div class="icons">
-             <a href=<%= 'like/'+result._id  %>><i class="ri-thumb-up-line"></i></i></a> 
-              <a href="#" ><i class="ri-thumb-down-line"></i></i></a>
+            <p style="font-size: 14px;"><%= result.post %></p>
+            <div class="icons" style="margin-top: 20px;">
+              <p style="font-size: 18px;">likes ( 0 )  </p> 
+              <p style="font-size: 18px; margin-left: 20px;"> dislikes ( 0 )</p>
             </div>
           </div>
         </div>

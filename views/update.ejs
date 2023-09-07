@@ -13,15 +13,16 @@
     <form action="/update" method="POST">
     <div class="formlm">
         <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="name" value=<%= details.name %>>
+        <input minlength="3" type="text" id="name" name="name" required placeholder="name" value=<%= details.name %>>
     </div>
     <div class="formlm">
         <label for="username">username</label>
-        <input type="text" id="username" name="username" placeholder="username" value=<%= details.username %>>
+        <input minlength="3" type="text" id="username" name="username"  placeholder="username" required value=<%= details.username %>>
     </div>
     <div class="formlm">
         <label for="Email">Email</label>
-        <input type="text" id="email" name="email" placeholder="Email" value=<%= details.email %>>
+        <input type="text" id="email" name="email" pattern=".+@gmail\.com"
+        title="Please provide only a My Company email address" required placeholder="Email" value=<%= details.email %>>
     </div>
     <div class="formlm">
         <input id="update" type="submit" value="Update My Account">

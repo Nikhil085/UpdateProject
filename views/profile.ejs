@@ -34,7 +34,7 @@
   </div>
   <div class="right">
       <h1>All Posts</h1>
-      <form action="/postblog" method="post">
+      <form action="/postblog" method="post" onsubmit=" return validatePost()">
           <textarea name="post" id="postfield" placeholder="Write Your Post Here"></textarea>
           <button type="Submit">POST IT</button>
       </form>
@@ -49,11 +49,14 @@
             <img src=<%= details.profileImage %>
              alt="">
                     </div>
-                    <h3><%= details.name %></h3>         
+                    <h3><%= details.name %></h3> 
+                    <small style="margin-left: 250px;" ><%= post.ti %></span></small>        
                 </div>
+                
                 <p><%= post.post %></p>
-                <div class="icons">
-                  <i class="ri-clipboard-line"></i>
+                <div class="post-time">${formattedDate}</div>
+                <div style="background-color: red;" class="icons">
+                  <a href=<%= '/delete/'+post._id%> style="margin-left: 15px;"><i class="ri-chat-delete-fill"></i></a>
                 </div>
             </div> 
             <% }) %>
@@ -68,6 +71,12 @@
   // let video = document.querySelector('#video');
   // let snap = document.querySelector('#snap');
 
+  var postTimes = document.querySelectorAll('.post-time');
+
+postTimes.forEach(function(postTime) {
+  var currentDate = new Date();
+  postTime.textContent = 'Posted on ' + currentDate.toLocaleString();
+});
  
 var prfimg = document.querySelector('#prfimg');
 var imageform = document.querySelector('#imageform');
@@ -89,6 +98,18 @@ inputFile.addEventListener('change', function(){
    imageform.submit();
    alert('Image Successfully Uploaded !');
 })
+
+// var dt = new Date();
+// document.getElementById('date-time').innerHTML=dt;
+
+function validatePost() {
+    var postContent = document.getElementById("postfield").value;
+    if (postContent.trim() === "") {
+        alert("Please write something in the textarea.");
+        return false;  
+        }
+    return true; 
+}
 
 
 </script>

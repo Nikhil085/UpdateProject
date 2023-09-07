@@ -9,6 +9,12 @@ html,body{
     width: 100%;
 }
 
+
+.post-time{
+    font-size: 13px;
+    margin-top: 50px;
+}
+
 #container{
     width: 85%;
     min-height: 100%;

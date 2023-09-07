@@ -66,7 +66,7 @@ router.get('/register', function(req, res){
 });
 
 router.get('/like/:id', function(req, res){
-  Post.findOne({_id: req.params.id})
+  postModel.findOne({_id: req.params.id})
   .then(function(foundpost){
     if(foundpost.likes.indexOf(req.session.passport.user) === -1 && foundpost.dislikes.indexOf(req.session.passport.user) === -1 ){
       foundpost.likes.push(req.session.passport.user);
@@ -94,6 +94,13 @@ router.get('/like/:id', function(req, res){
       })
      }
     }
+  })
+})
+
+router.get('/delete/:id',isLoggedIn,function(req, res){
+  postModel.findOneAndDelete({_id: req.params.id})
+  .then(function(deletePost){
+    res.redirect('/profile')
   })
 })
 
@@ -160,7 +167,7 @@ router.post('/register', function(req, res){
   userModel.register(userData, req.body.password)
    .then(function(registeredUser){
      passport.authenticate('local')(req, res, function(){
-       res.redirect('/profile');
+      res.redirect('/profile');
      })
    })
 })
@@ -186,8 +193,6 @@ function isLoggedIn(req, res, next){
     res.redirect('/login');
   }
 } 
-
-
 
 
 module.exports = router;

@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var plm = require('passport-local-mongoose');
 
 
+mongoose.set("strictQuery", true);
+
 mongoose.connect('mongodb://localhost/blogapp1');
 
 var userSchema = mongoose.Schema({
